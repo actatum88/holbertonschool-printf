@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		loop:
+loop:
 		if (format[i] == '%') /* triggers format scan */
 		{
 			for (j = 0; form[j].f != NULL; j++) /* scans formats */
@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 				if (format[i + 1] == form[j].c[0]) /* matches the identifier to function */
 				{
 					count += form[j].f(ap); /* triggers the format function */
-					i+=2; /* skips the format identifiers */
+					i += 2; /* skips the format identifiers */
 					goto loop; /* covers edge case of back to back formats */
 				}
 			}
