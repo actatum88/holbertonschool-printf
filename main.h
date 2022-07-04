@@ -2,6 +2,12 @@
 #define MAIN_H
 #include <stdarg.h>
 
+/**
+ * struct form - struct for specifiers
+ * @c: specifier to print
+ * @f: specifier function to execute
+ */
+
 typedef struct form
 {
 	char *c;
