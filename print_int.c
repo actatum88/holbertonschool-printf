@@ -8,25 +8,35 @@
 
 int print_i(va_list ap)
 {
-	int n, div;
+	int n = va_arg(ap, int), num = n, last = n % 10, exp = 1, dig;
 	int count = 0;
 
-	n = va_arg(ap, int);
-	div = 1;
+	n /= 10;
 
-	if (n < 0)
+	if (last < 0)
 	{
 		count += _putchar('-');
+		num = -num;
 		n = -n;
+		last = -last;
 	}
-	for (; n / div > 9;)
-		div *= 10;
-	for (; div != 0;)
+	if (num > 0)
 	{
-		count += _putchar('0' + (n / div));
-		n %= div;
-		div /= 10;
+		for (; num / 10 != 0;)
+		{
+			exp *= 10;
+			num /= 10;
+		}
+		num = n;
+		for (; exp > 0;)
+		{
+			dig = num / exp;
+			if (dig != 0)
+				count += _putchar(dig + '0');
+			num -= (dig * exp);
+			exp /= 10;
+		}
 	}
-
+	count += _putchar(last + '0');
 	return (count);
 }
