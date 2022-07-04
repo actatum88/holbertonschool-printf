@@ -26,9 +26,8 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (0);
-
+	if (format == NULL)
+		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 loop:
@@ -44,6 +43,8 @@ loop:
 				}
 			}
 		}
+		if (format[i] == '%' && !format[i + 1])
+			return (-1);
 		_putchar(format[i]);
 		count += 1;
 	}
