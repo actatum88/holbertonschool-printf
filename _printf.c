@@ -45,6 +45,8 @@ loop:
 		}
 		if (format[i] == '%' && !format[i + 1])
 			return (-1);
+		if (format[i] == '\0')
+			return (count);
 		_putchar(format[i]);
 		count += 1;
 	}
