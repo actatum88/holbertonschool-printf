@@ -19,6 +19,8 @@ int _printf(const char *format, ...)
 		{"c", print_char},
 		{"s", print_str},
 		{"%", print_perc},
+		{"i", print_i},
+		{"d", print_i},
 		{NULL, NULL}
 	};
 
@@ -43,7 +45,7 @@ loop:
 			}
 		}
 		_putchar(format[i]);
-		count++;
+		count += 1;
 	}
 	va_end(ap);
 	return (count);
