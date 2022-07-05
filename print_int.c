@@ -9,16 +9,9 @@
 
 int print_i(va_list ap)
 {
-	int n = va_arg(ap, int);
+	long int n = va_arg(ap, int);
 	int div = 1;
 	int count = 0;
-
-	if (n == INT_MIN)
-	{
-		count += _putchar('-');
-		count += _putchar('2');
-		n = 147483648;
-	}
 
 	if (n < 0)
 	{
