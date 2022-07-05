@@ -1,4 +1,5 @@
 #include "main.h"
+#include <limits.h>
 
 /**
  * print_i - prints an int or a double
@@ -12,18 +13,25 @@ int print_i(va_list ap)
 	int div = 1;
 	int count = 0;
 
+	if (n == INT_MIN)
+	{
+		count += _putchar('-');
+		count += _putchar('2');
+		n = 147483648;
+	}
+
 	if (n < 0)
 	{
 		count += _putchar('-');
 		n = -n;
 	}
 	while (n / div > 9)
-		div *= 10;
+		div *= 10; /* this sets div = to the highest placed int */
 	while (div != 0)
 	{
-		count += _putchar('0' + (n / div));
-		n %= div;
-		div /= 10;
+		count += _putchar('0' + (n / div)); /* this prints the highest placed int */
+		n %= div; /*moves n down a to the next highest placed int */
+		div /= 10; /* moves div down to the next highest placed int */
 	}
 	return (count);
 }
