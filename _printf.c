@@ -19,14 +19,13 @@ int _printf(const char *format, ...)
 		{"c", print_char},
 		{"s", print_str},
 		{"%", print_perc},
+		{"i", print_i},
+		{"d", print_i},
 		{NULL, NULL}
 	};
-
 	va_start(ap, format);
-
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (0);
-
+	if (format == NULL)
+		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 loop:
@@ -42,8 +41,12 @@ loop:
 				}
 			}
 		}
+		if (format[i] == '%' && !format[i + 1])
+			return (-1);
+		if (format[i] == '\0')
+			return (count);
 		_putchar(format[i]);
-		count++;
+		count += 1;
 	}
 	va_end(ap);
 	return (count);
