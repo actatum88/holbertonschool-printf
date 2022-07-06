@@ -49,15 +49,15 @@ No known bugs.
 .Bl -tag -width -indent
 .It To print your birth date:
 
-_printf("My birth date is %d/%d/%d");
+_printf("My birth date is %d/%d/%d", month, day, year);
 
 Output: My birth date is 01/30/1988.
 
 .It To print your name:
 
-_printf("%s, is my name.");
+_printf("%s, is my name.", name);
 
 Output: My name is Conner.
 
 .SH AUTHORS
-Alexandra Tatum & Conner Costler
+Alexandra Tatum & Conner Curtis
